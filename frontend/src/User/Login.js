@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import FacebookLogin from 'react-facebook-login';
 
-export default class App extends Component {
+export default class Login extends Component {
     
   render() {
     const response = (res) => {
