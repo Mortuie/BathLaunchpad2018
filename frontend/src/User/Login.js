@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import FacebookLogin from 'react-facebook-login';
+import {connect} from 'react-redux';
+import {login} from './actions';
 
-export default class Login extends Component {
+class Login extends Component {
     
   render() {
+
     const response = (res) => {
-        console.log(res);
+        this.props.loginUser(res);
     }
 
     const componentClicked = () => {
-        console.log("BANTER");
+        console.log("Trying to login");
     }
 
     return (
@@ -18,6 +21,7 @@ export default class Login extends Component {
                 appId="2018495705065023"
                 autoLoad={true}
                 fields="name, email, picture"
+                scope="public_profile,user_location,user_hometown"
                 onClick={componentClicked}
                 callback={response}
             />
@@ -26,3 +30,17 @@ export default class Login extends Component {
   }
 }
 
+const mapStateToProps = state => {
+    return {
+        user: state.user,
+    };
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        loginUser: (user) => dispatch(login(user)),
+    };
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
