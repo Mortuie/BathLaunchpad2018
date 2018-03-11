@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import img from '../images/blur.jpg';
 import axios from 'axios';
 import {connect} from 'react-redux';
@@ -11,6 +11,7 @@ class Login extends Component {
         email: '',
         password: '',
         error: '',
+        success: '',
     };
 
     login = () => {
@@ -24,10 +25,12 @@ class Login extends Component {
                 this.setState({
                     email: '',
                     password: '',
+                    error: '',
+                    success: res.data.status,
                 });
-                
+                this.props.loginUser();
             } else {
-                this.setState({error: JSON.parse(res.data).status});
+                this.setState({error: res.data.error});
             }
         })
         .catch(err => console.log(err));
@@ -38,6 +41,7 @@ class Login extends Component {
         return (
             <Container>
                 <Text>{this.state.error}</Text>
+                <Text success>{this.state.success}</Text>
                 <Input
                     placeholder='example@example.com'
                     value={this.state.email}
@@ -59,6 +63,10 @@ const Text = styled.text`
     color: red;
     font-weight: bold;
     margin-bottom: 12px;
+
+    ${props => props.success && css`
+        color: green;
+    `}
 `;
 
 const Container = styled.div`

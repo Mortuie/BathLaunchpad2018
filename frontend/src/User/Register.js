@@ -11,6 +11,7 @@ export default class Register extends Component {
         password: '',
         cpassword: '',
         error: '',
+        success: '',
     };
 
     register = () => {
@@ -22,20 +23,23 @@ export default class Register extends Component {
             cpassword: this.state.cpassword,
         })
         .then(res => {
-            console.log(res);
-            if (res.status == 200) {
+            console.log(res.data.status);
+            console.log(res.data.error);
+            if (parseInt(res.status) == 200) {
                 this.setState({
                     name: '',
                     email: '',
                     location: '',
                     password: '',
                     cpassword: '',
-                    error: JSON.parse(res.data).status,
+                    error: '',
+                    success: res.data.status,
                 });
 
             } else {
                 this.setState({
-                    error: JSON.parse(res.data).status
+                    error: res.data.error,
+                    success: '',
                 });
             }
         })
@@ -45,6 +49,7 @@ export default class Register extends Component {
     render() {
         return (
             <Container>
+                <Text success>{this.state.success}</Text>
                 <Text>{this.state.error}</Text>
                 <Input
                     placeholder="name"
@@ -88,6 +93,10 @@ const Text = styled.text`
     ${props => props.login && css`
         color: white;
         margin-top: 12px;
+    `}
+
+    ${props => props.success && css`
+        color: green;
     `}
 `;
 
