@@ -97,6 +97,7 @@ const Button = styled.button`
     padding: 0 5px;
     border: none;
     font-weight: bold;
+    cursor: pointer;
 `;
 
 const mapStateToProps = state => {

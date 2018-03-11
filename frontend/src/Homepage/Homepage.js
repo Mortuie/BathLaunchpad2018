@@ -7,12 +7,23 @@ export default class Homepage extends Component {
 
     return (
         <Container>
+            <Text>Find events near you!</Text>
             <Button onClick={() => this.props.history.push('/login')}>Login</Button>
             <Button left onClick={() => this.props.history.push('/register')}>Register</Button>
         </Container>
     );
   }
 }
+
+const Text = styled.text`
+    font-family: 'Coda Caption', sans-serif;
+    position: absolute;
+    top: 120px;
+    left: 0px;
+    text-align: center;
+    color: white;
+    font-size: 35px
+`;
 
 const Container = styled.div`
     width: 100%;
