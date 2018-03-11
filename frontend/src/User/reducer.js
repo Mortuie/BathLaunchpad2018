@@ -4,15 +4,15 @@ import {
 } from './constants';
 
 const initialState = {
-    user: null,
+    user: false,
 };
 
 export default function userReducer(state = initialState, action) {
     switch (action.type) {
         case LOGIN:
-            return {...state, user: action.user};
+            return {...state, user: true};
         case LOGOUT:
-            return {...state, user: null};
+            return {...state, user: false};
         default:
             return state;
     };

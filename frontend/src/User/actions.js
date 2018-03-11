@@ -2,17 +2,18 @@ import {
     LOGIN,
     LOGOUT
 } from './constants';
+import axios from 'axios';
 
-export function login(user) {
+export function login() {
     return {
         type: LOGIN,
-        user,
+        user: true,
     };
 }
 
 export function logout() {
     return {
         type: LOGOUT,
-        user: null,
+        user: false,
     };
 }

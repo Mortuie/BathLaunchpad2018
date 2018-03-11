@@ -1,29 +1,39 @@
 import React, {Component} from 'react';
 import {Route, Switch, Redirect, withRouter} from 'react-router-dom';
-import {Login} from '../User';
+import {Login, Register} from '../User';
+import {Homepage} from '../Homepage';
 import {connect} from 'react-redux';
 import Authroute from './Authroute';
 import NonAuthroute from './NonAuthroute';
 import {Dummy} from '../Dummy';
 
-class Account extends Component {
+class Routes extends Component {
 
     render() {
-        console.log(this.props);
         const user = this.props.user;
-        return (
-            <Switch>
-                <NonAuthroute path='/' loggedIn={user} component={Login} redirect='/homepage' />
-                <Authroute path='/homepage' loggedIn={user} component={Dummy} redirect='/' />
-            </Switch>
-        );
+
+        if (user) {
+            return (
+                <Switch>
+                    <Route component={Dummy} />
+                </Switch>
+            );
+        } else {
+            return (
+                <Switch>
+                    <Route exact path='/' component={Homepage} />
+                    <Route path='/login' component={Login} />
+                    <Route path='/register' component={Register} />
+                </Switch>
+            );
+        }
     }
 }
 
 const mapStateToProps = state => {
     return {
-        user: state.user,
+        user: state.userReducer.user,
     };
 }
 
-export default withRouter(connect(mapStateToProps)(Account));
+export default withRouter(connect(mapStateToProps)(Routes));

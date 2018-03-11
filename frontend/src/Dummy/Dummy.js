@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 
 
-export default class Account extends Component {
+export default class Dummy extends Component {
 
     render() {
         return (
             <div>
-                Dummy
+                DUMMY
             </div>
         );
     }

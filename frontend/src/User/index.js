@@ -1,4 +1,5 @@
 import Login from './Login';
+import Register from './Register';
 import userReducer from './reducer';
 
-export {Login, userReducer};
+export {Login, Register, userReducer};
