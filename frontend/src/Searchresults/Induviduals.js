@@ -27,7 +27,13 @@ class Induviduals extends Component {
         if (this.state.event) {
             return (
                 <Container>
-
+                    <Image src={this.state.event.largeimageurl}></Image>
+                    <Title>{this.state.event.eventname}</Title>
+                    <Price>{this.state.event.entryprice}</Price>
+                    <text>{this.state.event.date}</text>
+                    <text>{"From: " + this.state.event.openingtimes.doorsopen + " to: " + this.state.event.openingtimes.doorsclose}</text>
+                    <text>{this.state.event.description}</text>
+                    <Link href={this.state.event.link} target='_blank'>{this.state.event.link}</Link>
                 </Container>
             );
         } else { // no event
@@ -37,6 +43,27 @@ class Induviduals extends Component {
         }
     }
 }
+
+const Link = styled.a`
+    color: white;
+`;
+
+const Price = styled.text`
+    margin-top: 3px;
+    font-weight: bold;
+    font-size: 21px;
+`;
+
+const Title = styled.text`
+    font-size: 25px;
+    font-weight: bold;
+    padding: 3px;
+    text-align: center;
+`;
+
+const Image = styled.img`
+    width: 100%;
+`;
 
 const Container = styled.div`
     height: 80.5vh;

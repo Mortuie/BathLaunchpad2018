@@ -15,6 +15,7 @@ class View extends Component {
         axios.post('https://www.charlesanderson.co.uk/launchpad2018/view.php', {
             postcode: this.state.postcode,
             radius: this.state.radius,
+            email: this.props.user,
         })
         .then(res => {
             console.log(res);
@@ -84,7 +85,9 @@ const Container = styled.div`
 `;
 
 const mapStateToProps = state => {
-    return state;
+    return {
+        user: state.userReducer.email,
+    };
 }
 
 const mapDispatchToProps = dispatch => {
