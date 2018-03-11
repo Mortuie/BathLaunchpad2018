@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import {connect} from 'react-redux';
+import {adding_events} from './actions';
 
-export default class View extends Component {
+class View extends Component {
 
     state = {
         postcode: '',
@@ -14,7 +16,14 @@ export default class View extends Component {
             postcode: this.state.postcode,
             radius: this.state.radius,
         })
-        .then(res => console.log(res))
+        .then(res => {
+            console.log(res);
+            if (parseInt(res.status) == 200) {
+                this.setState({postcode: '', radius: ''});
+                this.props.addEvents(res.data.results);
+                this.props.history.push('/searchresults');
+            }
+        })
         .catch(err => console.log(err));
     }
 
@@ -73,3 +82,15 @@ const Container = styled.div`
     justify-content: center;
     align-items: center;
 `;
+
+const mapStateToProps = state => {
+    return state;
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        addEvents: (events) => dispatch(adding_events(events)),
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(View);
