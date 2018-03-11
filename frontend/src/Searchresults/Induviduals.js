@@ -25,12 +25,20 @@ class Induviduals extends Component {
         }
         console.log(this.state);
         return (
-            <div>
+            <Container>
                 BANTER
-            </div>
+            </Container>
         );
     }
 }
+
+const Container = styled.div`
+    height: 80.5vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`;
 
 const mapStateToProps = state => {
     return {

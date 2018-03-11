@@ -11,9 +11,11 @@ class Searchresults extends Component {
                 {
                     (this.props.events).map(item => {
                         return (
-                            <div
+                            <Card
                                 onClick={() => this.props.history.push('/searchresults/' + item.id)}
-                            >{item.eventname}</div>
+                            >
+                                
+                            </Card>
                         );
                     })
                 }
@@ -21,6 +23,13 @@ class Searchresults extends Component {
         );
     }
 }
+
+const Card = styled.div`
+    background-color: black;
+    margin-bottom: 10px;
+    height: 50px;
+    width: 100px;
+`;
 
 // make it scrollable....
 const Container = styled.div`
