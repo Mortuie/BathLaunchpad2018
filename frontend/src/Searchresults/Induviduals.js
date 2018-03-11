@@ -19,16 +19,22 @@ class Induviduals extends Component {
 
     render() {
         var id = this.props.match.params.id;
-
+        console.log("state", this.state.event);
         if (!this.state.event) {
             this.getCurrentEvent(id);
         }
-        console.log(this.state);
-        return (
-            <Container>
-                BANTER
-            </Container>
-        );
+
+        if (this.state.event) {
+            return (
+                <Container>
+
+                </Container>
+            );
+        } else { // no event
+            return (
+                <div></div>
+            );
+        }
     }
 }
 
