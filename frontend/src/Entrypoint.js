@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Routes} from './Routes';
 import {Navbar} from './Navbar';
+import {Footer} from './Footer';
 import styled from 'styled-components';
 import img from './images/blur.jpg';
 
@@ -11,6 +12,7 @@ export default class Entrypoint extends Component {
             <Container>
                 <Navbar />
                 <Routes />
+                <Footer />
             </Container>
         );
     }

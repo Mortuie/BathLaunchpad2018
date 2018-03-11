@@ -62,7 +62,7 @@ export default class Register extends Component {
                     onChange={e => this.setState({email: e.target.value})}
                 ></Input>
                 <Input
-                    placeholder="location"
+                    placeholder="postcode"
                     value={this.state.location}
                     onChange={e => this.setState({location: e.target.value})}
                 ></Input>
@@ -79,7 +79,6 @@ export default class Register extends Component {
                     onChange={e => this.setState({cpassword: e.target.value})}
                 ></Input>
                 <Button onClick={this.register}>Register</Button>
-                <Text login>To Login</Text>
             </Container>
         );
     }

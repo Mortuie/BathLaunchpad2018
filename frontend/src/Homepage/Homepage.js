@@ -25,7 +25,7 @@ const Container = styled.div`
 const Button = styled.button`
     background-color: #48ACB1;
     color: white;
-    width: 260px;
+    width: 50%;
     height: 60px;
     font-weight: bold;
     padding: 0 5px;

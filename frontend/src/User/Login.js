@@ -21,14 +21,14 @@ class Login extends Component {
         })
         .then(res => {
             console.log(res)
-            if (res.status == 200) {
+            if (parseInt(res.status) == 200) {
+                this.props.loginUser(this.state.email);
                 this.setState({
                     email: '',
                     password: '',
                     error: '',
                     success: res.data.status,
                 });
-                this.props.loginUser();
             } else {
                 this.setState({error: res.data.error});
             }
@@ -107,7 +107,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        loginUser: () => dispatch(login()),
+        loginUser: (email) => dispatch(login(email)),
     };
 }
 

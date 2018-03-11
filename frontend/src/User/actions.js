@@ -4,10 +4,11 @@ import {
 } from './constants';
 import axios from 'axios';
 
-export function login() {
+export function login(email) {
     return {
         type: LOGIN,
         user: true,
+        email,
     };
 }
 
