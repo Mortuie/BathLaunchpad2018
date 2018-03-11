@@ -16,12 +16,10 @@ export default class View extends Component {
         })
         .then(res => console.log(res))
         .catch(err => console.log(err));
-
     }
 
 
     render() {
-        console.log("xD", this.state);
         return (    
             <Container>
                 <Input

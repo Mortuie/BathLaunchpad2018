@@ -8,6 +8,7 @@ import NonAuthroute from './NonAuthroute';
 import {Dummy} from '../Dummy';
 import {View} from '../View';
 import {Settings} from '../Settings';
+import {Searchresults} from '../Searchresults';
 
 class Routes extends Component {
 
@@ -21,6 +22,7 @@ class Routes extends Component {
                 <NonAuthroute loggedIn={user} component={Register} path='/register' redirect='/view' />
                 <Authroute loggedIn={user} component={View} path='/view' redirect='/' />
                 <Authroute loggedIn={user} component={Settings} path='/settings' redirect='/' />
+                <Authroute loggedIn={user} component={Dummy} path='/search' redirect='/' />
                 <Route component={Logout} path='/logout' />
                 <Route path='*' component={Dummy} />      
             </Switch>
